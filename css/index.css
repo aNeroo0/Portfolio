@@ -1,11 +1,10 @@
-/* Reset di base per garantire la copertura completa */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-/* Variabili per il tema chiaro (default) */
+/* Variabili Tema */
 :root {
   --bg-color: #f8f9fa;
   --grid-color: rgba(0, 0, 0, 0.08);
@@ -51,10 +50,226 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
 .main-content {
   background: var(--card-bg);
   border-radius: 12px;
   padding: 40px;
   margin-top: 40px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.section-line {
+  width: 60px;
+  height: 3px;
+  background: var(--text-color);
+  margin: 10px auto 0;
+}
+
+/* Navbar */
+.bottom-navbar {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 15px;
+  border-radius: 50px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.bottom-navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.bottom-navbar a {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 30px;
+  transition: all 0.3s ease;
+}
+
+.bottom-navbar a:hover {
+  background: #1d1d1d;
+  color: #ffffff;
+  transform: translateY(-5px);
+}
+
+.bottom-navbar a::after {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+  content: attr(data-label);
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1d1d1d;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.bottom-navbar a:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+
+/* Home */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.hero-description {
+  font-family: "Inter", sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0.7;
+}
+
+.scroll-indicator {
+  margin-top: 40px;
+  font-size: 2rem;
+  color: var(--text-color);
+  opacity: 0.7;
+  animation: bounce 1.8s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Chi sono */
+.about-image {
+  width: 90%;
+  margin: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid var(--grid-color);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.about-image img {
+  width: 110%;
+  height: 110%;
+  object-fit: cover;
+}
+
+.info-title {
+  margin-top: -50px;
+  padding: 30px;
+  font-size: 28px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 20px;
+}
+
+.info-item {
+  padding: 10px 15px;
+  background: var(--card-bg);
+  border-radius: 12px;
+}
+
+.info-item span {
+  font-size: 12px;
+  opacity: 0.6;
+  display: block;
+}
+
+.info-item p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.about-text {
+  line-height: 1.8;
+  opacity: 0.85;
+  margin-bottom: 20px;
+}
+
+/* Skills */
+.skills-wrapper {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.skill {
+  background: var(--card-bg);
+  padding: 15px 18px;
+  border-radius: 14px;
+  border: 1px solid var(--grid-color);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.skill-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  background: var(--text-color);
+  border-radius: 20px;
+  transition: width 1s ease;
 }

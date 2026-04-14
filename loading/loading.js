@@ -46,7 +46,7 @@ function styleLoader() {
 }
 
 function monitorLoading(loader, startTime) {
-    const MIN_LOADING_TIME = 3000; // 3 secondi
+    const MIN_LOADING_TIME = 2000; // 2 secondi
     const resources = Array.from(document.images);
     let loaded = 0;
     const total = resources.length || 1;

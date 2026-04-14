@@ -6,13 +6,168 @@
     <title>Andrea Neri</title>
     <script src="loading/loading.js" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
   </head>
   <body>
-    <div>
-      <h1 class="display-2 fw-semibold">Andrea Neri</h1>
-    </div>
+
+    <!-- Navbar -->
+    <nav class="bottom-navbar">
+      <ul>
+        <li>
+          <a href="#home" data-label="HOME">
+            <i class="bi bi-house"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#chi-sono" data-label="CHI SONO">
+            <i class="bi bi-person"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#studi" data-label="STUDI">
+            <i class="bi bi-file-earmark-text"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#progetti" data-label="PROGETTI">
+            <i class="bi bi-terminal"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#contatti" data-label="CONTATTI">
+            <i class="bi bi-info-circle"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Home -->
+    <main class="hero-section d-flex align-items-center justify-content-center text-center" id="home">
+      <div class="container">
+        <h1 class="display-1 fw-semibold hero-title">ANDREA NERI</h1>     
+        <p class="mt-3 hero-description">
+          Un portfolio che racconta la mia storia, la mia crescita personale ed educativa, sottolineando le abilità sviluppate e i futuri obiettivi che mi guidano lungo il percorso.
+        </p>
+        <i class="bi bi-chevron-down scroll-indicator"></i>
+      </div>
+    </main>
+
+    <!-- Chi sono -->
+    <section id="chi-sono" class="section">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h1 class="section-title">CHI SONO</h1>
+          <div class="section-line"></div>
+        </div>
+        <div class="row align-items-center g-5">
+          <div class="col-lg-5 text-center">
+            <div class="about-image">
+              <img src="img/me.jpeg" alt="Foto profilo">
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <h2 class="info-title text-center">ANDREA NERI MOCCHI</h2>
+            <div class="info-grid">
+              <div class="info-item">
+                <span>Nato il</span>
+                <p>3 marzo 2008</p>
+              </div>
+              <div class="info-item">
+                <span>Età</span>
+                <p>18 anni</p>
+              </div>
+              <div class="info-item">
+                <span>Città</span>
+                <p>Milano, Italia</p>
+              </div>
+              <div class="info-item">
+                <span>Passioni</span>
+                <p>Programmazione, design, moto</p>
+              </div>
+            </div>
+            <div class="row mt-5">
+              <div class="col-12">
+                <p class="about-text">
+                  Mi sono avvicinato al mondo dell’informatica verso le scuole medie, quando ho iniziato a chiedermi: “come si crea un sito web?”. 
+                  Ho cominciato usando Google Sites, ma subito mi sono reso conto che era troppo limitato e, anche se semplice, avevo voglia di fare di più. Da lì ho iniziato a guardare video per capire le basi dei siti web, realizzando i miei primi progettiper imparare come funzionavano le varie parti che studiavo. Con il tempo ho iniziato a creare siti con uno scopo più concreto come menu digitali o piccoli progetti personali. In seguito ho capito quanto anche il design fosse importante: non basta che un sito funzioni, deve anche colpire visivamente. Per questo ho lavorato di più sul CSS per migliorare il front-end, fino ad arrivare a introdurre anche JavaScript per rendere i siti più dinamici e interattivi. 
+                  Oltre alla programmazione, ho anche una piccola passione per le moto: ne possiedo una e mi ha fatto capire quanto sia importante osservare, capire e migliorare le cose nel dettaglio. La mia prima moto l’ho avuta tra la prima e la seconda superiore, ed è da lì che è iniziato tutto questo percorso.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section">
+      <div class="container">
+        <div class="skills-wrapper mt-5">
+        <div class="text-center mb-4">
+          <h1 class="section-title">SKILLS</h1>
+          <div class="section-line"></div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill">
+            <div class="skill-header">
+              <span>Python</span>
+              <span>65%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width: 65%"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-header">
+              <span>HTML</span>
+              <span>75%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width: 75%"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-header">
+              <span>CSS</span>
+              <span>70%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width: 70%"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-header">
+              <span>JavaScript</span>
+              <span>50%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width: 50%"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <div class="skill-header">
+              <span>Java</span>
+              <span>60%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width: 60%"></div>
+            </div>
+          </div>
+      <div>
+    </section>
+
   </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>
+
+
+<!-- 
+  mettere l'immagine che non può essere prene e copiata ne ecc...
+-->

@@ -64,6 +64,20 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
+.section {
+  padding: 100px 0;
+}
+
+::selection {
+  background: var(--text-color);
+  color: var(--bg-color);
+}
+
+::-moz-selection {
+  background: var(--text-color);
+  color: var(--bg-color);
+}
+
 .section-line {
   width: 60px;
   height: 3px;
@@ -116,8 +130,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bottom-navbar a:hover {
-  background: #1d1d1d;
-  color: #ffffff;
+  background: var(--text-color);
+  color: var(--bg-color);
   transform: translateY(-5px);
 }
 
@@ -130,8 +144,8 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
-  background: #1d1d1d;
-  color: #ffffff;
+  background: var(--text-color);
+  color: var(--bg-color);
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 12px;
@@ -285,4 +299,322 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--text-color);
   border-radius: 20px;
   transition: width 1s ease;
+}
+
+/* Studi */
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--grid-color);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 10px 40px;
+  box-sizing: border-box;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+  text-align: left;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 30px;
+  right: -8px;
+  width: 16px;
+  height: 16px;
+  background: var(--text-color);
+  border-radius: 50%;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+  left: -8px;
+}
+
+.timeline-content {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid var(--grid-color);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-content h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.timeline-date {
+  font-size: 14px;
+  opacity: 0.7;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.timeline-content p {
+  margin: 5px;
+  opacity: 0.85;
+}
+
+/* Progetti */
+/* Contatti */
+.contact-card {
+  display: block;
+  background: var(--card-bg);
+  border: 1px solid var(--grid-color);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  height: 100%;
+}
+
+.contact-card i {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.contact-card h5 {
+  margin-bottom: 10px;
+  font-family: "Inter", sans-serif;
+}
+
+.contact-card p {
+  margin: 0;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+  color: var(--text-color);
+}
+
+.contact-card:visited,
+.contact-card:active {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+/* Footer */
+.footer {
+  margin-top: 60px;
+  padding: 20px 0;
+  background: transparent;
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+
+/* Impostazioni */
+.settings-container {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 1100;
+}
+
+.settings-btn {
+  width: 70px;
+  height: 70px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: none;
+  border-radius: 50%;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px var(--card-bg);
+  transition: all 0.3s ease;
+}
+
+.settings-btn:hover {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+.settings-menu {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 260px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid var(--grid-color);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: none;
+  backdrop-filter: blur(10px);
+}
+
+.settings-menu.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.settings-title {
+  font-family: "Inter", sans-serif;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.settings-item i {
+  margin-right: 8px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 22px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: 0.3s;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+input:checked + .slider {
+  background-color: var(--bg-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+body.large-text {
+  font-size: 1.1rem;
+}
+
+/* Pulsante Cancella Sito */
+.delete-site {
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.delete-site span {
+  margin-right: 75px;
+}
+
+.delete-site:hover {
+  color: #dc3545;
+}
+
+.site-deleted main,
+.site-deleted section,
+.site-deleted nav,
+.site-deleted .settings-container,
+.site-deleted footer {
+  opacity: 0;
+  transform: scale(0.98);
+  filter: blur(5px);
+  transition: all 1.5s ease;
+  pointer-events: none;
+}
+
+.fake-404 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease;
+}
+
+.fake-404.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fake-404-content h1 {
+  font-size: 8rem;
+  margin-bottom: 10px;
+}
+
+.fake-404-content h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.fake-404-content p {
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+.restore-btn {
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--grid-color);
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.restore-btn:hover {
+  background: #1d1d1d;
+  color: #ffffff;
+  transform: translateY(-3px);
 }

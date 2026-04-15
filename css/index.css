@@ -71,6 +71,15 @@ h1, h2, h3, h4, h5, h6 {
   margin: 10px auto 0;
 }
 
+.no-interaction {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  -webkit-user-drag: none;
+}
+
 /* Navbar */
 .bottom-navbar {
   position: fixed;
@@ -235,6 +244,10 @@ h1, h2, h3, h4, h5, h6 {
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.skills {
+  margin-bottom: 40px;
 }
 
 .skills-grid {

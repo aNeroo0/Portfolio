@@ -1,58 +1,99 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // --- SELETTORI ---
     const settingsToggle = document.getElementById("settingsToggle");
     const settingsMenu = document.getElementById("settingsMenu");
-    const themeToggle = document.getElementById("themeToggle");
-    const fontToggle = document.getElementById("fontToggle");
     const settingsContainer = document.querySelector(".settings-container");
+    
+    const menuToggle = document.getElementById("menuToggle");
+    const menuOverlay = document.getElementById("menuOverlay");
+    const menuLinks = document.querySelectorAll(".menu-box a");
 
-    // Apertura e chiusura menu impostazioni
-    if (settingsToggle && settingsMenu) {
-        settingsToggle.addEventListener("click", () => {
-        settingsMenu.classList.toggle("active");
+    // Selezioniamo TUTTI i toggle (sia desktop che mobile) usando le classi o gli ID multipli
+    const themeToggles = document.querySelectorAll("#themeToggle, #themeToggleMobile");
+    const fontToggles = document.querySelectorAll("#fontToggle, #fontToggleMobile");
+
+    // --- GESTIONE MENU MOBILE (Apertura/Chiusura) ---
+    if (menuToggle && menuOverlay) {
+        menuToggle.addEventListener("click", () => {
+            menuOverlay.classList.toggle("active");
+            const icon = menuToggle.querySelector("i");
+            icon.classList.toggle("bi-list");
+            icon.classList.toggle("bi-x-lg");
+        });
+
+        menuLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                menuOverlay.classList.remove("active");
+                menuToggle.querySelector("i").classList.replace("bi-x-lg", "bi-list");
+            });
+        });
+
+        menuOverlay.addEventListener("click", (e) => {
+            if (e.target === menuOverlay) {
+                menuOverlay.classList.remove("active");
+                menuToggle.querySelector("i").classList.replace("bi-x-lg", "bi-list");
+            }
         });
     }
 
-    // Chiusura del menu cliccando fuori
+    // --- GESTIONE IMPOSTAZIONI DESKTOP (Menu a comparsa) ---
+    if (settingsToggle && settingsMenu) {
+        settingsToggle.addEventListener("click", () => {
+            settingsMenu.classList.toggle("active");
+        });
+    }
+
     document.addEventListener("click", (e) => {
-        if (settingsContainer && !settingsContainer.contains(e.target)) {
-        settingsMenu.classList.remove("active");
+        if (settingsContainer && !settingsContainer.contains(e.target) && !settingsToggle.contains(e.target)) {
+            settingsMenu.classList.remove("active");
         }
     });
 
-    // Modalità scura
-    if (themeToggle) {
-        themeToggle.addEventListener("change", () => {
-        document.body.classList.toggle("dark-mode");
-
-        if (document.body.classList.contains("dark-mode")) {
+    // --- LOGICA THEME (Sincronizzata) ---
+    const updateTheme = (isDark) => {
+        if (isDark) {
+            document.body.classList.add("dark-mode");
             localStorage.setItem("theme", "dark");
         } else {
+            document.body.classList.remove("dark-mode");
             localStorage.setItem("theme", "light");
         }
-        });
+        // Sincronizza tutti i toggle presenti nella pagina
+        themeToggles.forEach(t => t.checked = isDark);
+    };
 
-        if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark-mode");
-        themeToggle.checked = true;
-        }
+    themeToggles.forEach(toggle => {
+        toggle.addEventListener("change", (e) => {
+            updateTheme(e.target.checked);
+        });
+    });
+
+    // Inizializzazione Tema al caricamento
+    if (localStorage.getItem("theme") === "dark") {
+        updateTheme(true);
     }
 
-    // Testo grande
-    if (fontToggle) {
-        fontToggle.addEventListener("change", () => {
-        document.body.classList.toggle("large-text");
-
-        if (document.body.classList.contains("large-text")) {
+    // --- LOGICA FONT SIZE (Sincronizzata) ---
+    const updateFont = (isLarge) => {
+        if (isLarge) {
+            document.body.classList.add("large-text");
             localStorage.setItem("fontSize", "large");
         } else {
+            document.body.classList.remove("large-text");
             localStorage.setItem("fontSize", "normal");
         }
+        // Sincronizza tutti i toggle presenti nella pagina
+        fontToggles.forEach(t => t.checked = isLarge);
+    };
+
+    fontToggles.forEach(toggle => {
+        toggle.addEventListener("change", (e) => {
+            updateFont(e.target.checked);
         });
+    });
 
-        if (localStorage.getItem("fontSize") === "large") {
-        document.body.classList.add("large-text");
-        fontToggle.checked = true;
-        }
+    // Inizializzazione Font al caricamento
+    if (localStorage.getItem("fontSize") === "large") {
+        updateFont(true);
     }
-
 });

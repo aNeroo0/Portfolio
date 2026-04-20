@@ -1,4 +1,4 @@
-/* From Uiverse.io by Nawsome */ 
+/* From Uiverse.io by Nawsome */
 .blobs {
   width: 300px;
   height: 300px;
@@ -11,7 +11,7 @@
 .blobs .blob-center {
   transform-style: preserve-3d;
   position: absolute;
-  background: #1d1d1d;
+  background: var(--text-color);
   top: 50%;
   left: 50%;
   width: 30px;
@@ -20,12 +20,12 @@
   transform: scale(0.9) translate(-50%, -50%);
   animation: blob-grow_2 linear 3.4s infinite;
   border-radius: 50%;
-  box-shadow: 0 -10px 40px -5px #1d1d1d;
+  box-shadow: 0 -10px 40px -5px var(--text-color);
 }
 
 .blob {
   position: absolute;
-  background: #1d1d1d;
+  background: var(--text-color);
   top: 50%;
   left: 50%;
   width: 30px;

@@ -29,7 +29,7 @@ function styleLoader() {
             left: 0;
             width: 100%;
             height: 100%;
-            background: #f8f6f2;
+            background: var(--bg-color);
             display: flex;
             justify-content: center;
             align-items: center;

@@ -382,6 +382,50 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Progetti */
+.projects-list {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.project-item {
+  background: var(--card-bg);
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 25px 10px;
+}
+
+.project-left h5 {
+  margin-bottom: 8px;
+}
+
+.project-left p {
+  font-size: 0.95rem;
+  opacity: 0.75;
+  line-height: 1.7;
+}
+
+.project-right {
+  text-align: right;
+  min-width: 120px;
+}
+
+.project-right span {
+  display: inline-block;
+  background: var(--grid-color);
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  margin: 3px;
+}
+
+.project-divider {
+  height: 1px;
+  background: var(--text-color);
+  width: 100%;
+}
+
 /* Contatti */
 .contact-card {
   display: block;

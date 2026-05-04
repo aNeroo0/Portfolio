@@ -46,7 +46,7 @@ function styleLoader() {
 }
 
 function monitorLoading(loader, startTime) {
-    const MIN_LOADING_TIME = 2000; // 2 secondi
+    const MIN_LOADING_TIME = 500;
     const resources = Array.from(document.images);
     let loaded = 0;
     const total = resources.length || 1;
@@ -82,7 +82,10 @@ function monitorLoading(loader, startTime) {
         });
     }
 
-    window.addEventListener("load", tryHideLoader);
+    window.addEventListener('load', () => {
+    const loader = document.getElementById("page-loader");
+    if(loader) hideLoader(loader);
+});
 }
 
 function hideLoader(loader) {

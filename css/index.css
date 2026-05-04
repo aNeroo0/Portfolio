@@ -55,6 +55,10 @@ body {
   overflow-x: hidden;
 }
 
+body.large-text {
+  font-size: 1.1rem;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Inter", sans-serif;
   font-weight: 500;
@@ -382,48 +386,67 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Progetti */
-.projects-list {
-  max-width: 900px;
+.bacheca {
+  max-width: 950px;
   margin: 0 auto;
-}
-
-.project-item {
-  background: var(--card-bg);
-  border-radius: 15px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 25px 10px;
+  flex-direction: column;
+  gap: 22px;
 }
 
-.project-left h5 {
-  margin-bottom: 8px;
+.progetto {
+  position: relative;
+  display: grid;
+  grid-template-columns: 70px 1fr 90px;
+  align-items: center;
+  gap: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--grid-color);
+  border-radius: 18px;
+  padding: 28px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.project-left p {
-  font-size: 0.95rem;
-  opacity: 0.75;
+.progetto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.progetto-numero {
+  font-size: 1.6rem;
+  font-weight: 500;
+  opacity: 0.45;
+}
+
+.progetto-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.progetto-content p {
+  max-width: 650px;
+  font-size: 1em;
   line-height: 1.7;
+  opacity: 0.78;
+  margin-bottom: 15px;
 }
 
-.project-right {
-  text-align: right;
-  min-width: 120px;
-}
-
-.project-right span {
+.progetto-tags span {
   display: inline-block;
   background: var(--grid-color);
+  color: var(--text-color);
   padding: 5px 10px;
   border-radius: 10px;
   font-size: 12px;
-  margin: 3px;
+  margin-right: 5px;
+  margin-bottom: 6px;
 }
 
-.project-divider {
-  height: 1px;
-  background: var(--text-color);
-  width: 100%;
+.progetto-icon {
+  font-size: 3rem;
+  opacity: 0.18;
+  justify-self: end;
 }
 
 /* Contatti */
@@ -585,10 +608,6 @@ input:checked + .slider:before {
   transform: translateX(20px);
 }
 
-body.large-text {
-  font-size: 1.1rem;
-}
-
 
 /* Media Queries */
 @media (max-width: 768px) {
@@ -638,6 +657,24 @@ body.large-text {
   .timeline-dot {
     top: -8px;
     left: -6px;
+  }
+
+  /* Progetti */
+  .progetto {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+
+  .progetto-numero {
+    font-size: 1.2rem;
+  }
+
+  .progetto-icon {
+    position: absolute;
+    right: 22px;
+    top: 22px;
+    font-size: 2.6rem;
+    opacity: 0.12;
   }
 }
 

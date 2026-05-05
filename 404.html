@@ -4,6 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Errore 404 - Pagina non trovata</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="img/android-chrome-192x192.png">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
@@ -26,160 +31,6 @@
       }
     })();
   </script>
-  <style>
-    html.preload-dark {
-      --bg-color: #191a1a;
-      --grid-color: rgba(114, 114, 114, 0.3);
-      --text-color: #ffffff;
-      --card-bg: rgba(0, 0, 0, 0.6);
-    }
-
-    html.preload-large-text {
-      font-size: 1.1rem;
-    }
-
-    .error-page {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-    }
-
-    .error-card {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 60px 50px;
-      background: var(--card-bg);
-      border: 1px solid var(--grid-color);
-      border-radius: 28px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
-    }
-
-    .error-code {
-      font-family: "Inter", sans-serif;
-      font-size: clamp(5rem, 14vw, 9rem);
-      font-weight: 600;
-      line-height: 1;
-      color: var(--text-color);
-      letter-spacing: 6px;
-      opacity: 0.95;
-    }
-
-    .error-line {
-      width: 80px;
-      height: 3px;
-      background: var(--text-color);
-      margin: 22px auto 28px;
-      opacity: 0.9;
-    }
-
-    .error-title {
-      font-family: "Inter", sans-serif;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 500;
-      letter-spacing: 1px;
-      margin-bottom: 18px;
-      color: var(--text-color);
-    }
-
-    .error-text {
-      max-width: 540px;
-      margin: 0 auto 30px;
-      font-family: "Inter", sans-serif;
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--text-color);
-      opacity: 0.75;
-    }
-
-    .error-actions {
-      display: flex;
-      justify-content: center;
-    }
-
-    .error-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 24px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-family: "Inter", sans-serif;
-      font-weight: 500;
-      background: var(--text-color);
-      color: var(--bg-color);
-      transition: transform 0.25s ease, opacity 0.25s ease;
-    }
-
-    .error-btn:hover {
-      transform: translateY(-3px);
-      opacity: 0.92;
-      color: var(--bg-color);
-    }
-
-    .error-btn:visited,
-    .error-btn:active {
-      color: var(--bg-color);
-      text-decoration: none;
-    }
-
-    body.large-text .error-text {
-      font-size: 1.15rem;
-    }
-
-    body.large-text .error-btn {
-      font-size: 1.05rem;
-      padding: 15px 26px;
-    }
-
-    @media (max-width: 768px) {
-      .error-page {
-        padding: 30px 16px;
-      }
-
-      .error-card {
-        padding: 40px 24px;
-        border-radius: 22px;
-      }
-
-      .error-code {
-        letter-spacing: 3px;
-      }
-
-      .error-line {
-        width: 60px;
-        margin: 18px auto 22px;
-      }
-
-      .error-text {
-        font-size: 0.98rem;
-        line-height: 1.7;
-        margin-bottom: 24px;
-      }
-
-      .error-btn {
-        width: 100%;
-        justify-content: center;
-        padding: 14px 18px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .error-card {
-        padding: 34px 18px;
-      }
-
-      .error-title {
-        font-size: 1.6rem;
-      }
-
-      .error-text {
-        font-size: 0.95rem;
-      }
-    }
-  </style>
 </head>
 <body>
 
@@ -188,18 +39,10 @@
       <div class="error-card text-center">
         <div class="error-code">404</div>
         <div class="error-line"></div>
-
         <h1 class="error-title">Pagina non trovata</h1>
-
-        <p class="error-text">
-          La pagina che stai cercando non esiste, è stata spostata oppure il collegamento non è corretto.
-        </p>
-
+        <p class="error-text">La pagina che stai cercando non esiste, è stata spostata oppure il collegamento non è corretto.</p>
         <div class="error-actions">
-          <a href="index.html" class="error-btn">
-            <i class="bi bi-house-door"></i>
-            Torna alla home
-          </a>
+          <a href="/" class="error-btn"><i class="bi bi-house-door"></i>Torna alla home</a>
         </div>
       </div>
     </div>
@@ -209,15 +52,12 @@
     document.addEventListener("DOMContentLoaded", () => {
       const savedTheme = localStorage.getItem("theme");
       const savedFontSize = localStorage.getItem("fontSize");
-
       if (savedTheme === "dark") {
         document.body.classList.add("dark-mode");
       }
-
       if (savedFontSize === "large") {
         document.body.classList.add("large-text");
       }
-
       document.documentElement.classList.remove("preload-dark", "preload-large-text");
     });
   </script>

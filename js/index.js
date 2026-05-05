@@ -1,99 +1,114 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // --- SELETTORI ---
-    const settingsToggle = document.getElementById("settingsToggle");
-    const settingsMenu = document.getElementById("settingsMenu");
-    const settingsContainer = document.querySelector(".settings-container");
-    
-    const menuToggle = document.getElementById("menuToggle");
-    const menuOverlay = document.getElementById("menuOverlay");
-    const menuLinks = document.querySelectorAll(".menu-box a");
+  const body = document.body;
 
-    // Selezioniamo TUTTI i toggle (sia desktop che mobile) usando le classi o gli ID multipli
-    const themeToggles = document.querySelectorAll("#themeToggle, #themeToggleMobile");
-    const fontToggles = document.querySelectorAll("#fontToggle, #fontToggleMobile");
+  // --- SELETTORI DESKTOP ---
+  const settingsToggle = document.getElementById("settingsToggle");
+  const settingsMenu = document.getElementById("settingsMenu");
+  const settingsContainer = document.querySelector(".settings-container");
 
-    // --- GESTIONE MENU MOBILE (Apertura/Chiusura) ---
-    if (menuToggle && menuOverlay) {
-        menuToggle.addEventListener("click", () => {
-            menuOverlay.classList.toggle("active");
-            const icon = menuToggle.querySelector("i");
-            icon.classList.toggle("bi-list");
-            icon.classList.toggle("bi-x-lg");
-        });
+  // --- SELETTORI MENU MOBILE ---
+  const menuToggle = document.getElementById("menuToggle");
+  const menuOverlay = document.getElementById("menuOverlay");
+  const menuLinks = document.querySelectorAll(".mobile-nav a, .menu-box a");
 
-        menuLinks.forEach(link => {
-            link.addEventListener("click", () => {
-                menuOverlay.classList.remove("active");
-                menuToggle.querySelector("i").classList.replace("bi-x-lg", "bi-list");
-            });
-        });
+  // --- TOGGLE TEMA / FONT DESKTOP + MOBILE ---
+  const themeToggles = document.querySelectorAll("#themeToggle, #themeToggleMobile");
+  const fontToggles = document.querySelectorAll("#fontToggle, #fontToggleMobile");
 
-        menuOverlay.addEventListener("click", (e) => {
-            if (e.target === menuOverlay) {
-                menuOverlay.classList.remove("active");
-                menuToggle.querySelector("i").classList.replace("bi-x-lg", "bi-list");
-            }
-        });
+  // FUNZIONI GENERALI
+  function closeMobileMenu() {
+    if (!menuOverlay || !menuToggle) return;
+
+    menuOverlay.classList.remove("active");
+    body.style.overflow = "auto";
+
+    const icon = menuToggle.querySelector("i");
+    if (icon) {
+      icon.classList.remove("bi-x-lg");
+      icon.classList.add("bi-list");
     }
+  }
 
-    // --- GESTIONE IMPOSTAZIONI DESKTOP (Menu a comparsa) ---
-    if (settingsToggle && settingsMenu) {
-        settingsToggle.addEventListener("click", () => {
-            settingsMenu.classList.toggle("active");
-        });
+  function openOrToggleMobileMenu() {
+    if (!menuOverlay || !menuToggle) return;
+
+    const isActive = menuOverlay.classList.toggle("active");
+    body.style.overflow = isActive ? "hidden" : "auto";
+
+    const icon = menuToggle.querySelector("i");
+    if (icon) {
+      icon.classList.toggle("bi-list", !isActive);
+      icon.classList.toggle("bi-x-lg", isActive);
     }
+  }
 
-    document.addEventListener("click", (e) => {
-        if (settingsContainer && !settingsContainer.contains(e.target) && !settingsToggle.contains(e.target)) {
-            settingsMenu.classList.remove("active");
-        }
-    });
-
-    // --- LOGICA THEME (Sincronizzata) ---
-    const updateTheme = (isDark) => {
-        if (isDark) {
-            document.body.classList.add("dark-mode");
-            localStorage.setItem("theme", "dark");
-        } else {
-            document.body.classList.remove("dark-mode");
-            localStorage.setItem("theme", "light");
-        }
-        // Sincronizza tutti i toggle presenti nella pagina
-        themeToggles.forEach(t => t.checked = isDark);
-    };
+  function updateTheme(isDark) {
+    body.classList.toggle("dark-mode", isDark);
+    localStorage.setItem("theme", isDark ? "dark" : "light");
 
     themeToggles.forEach(toggle => {
-        toggle.addEventListener("change", (e) => {
-            updateTheme(e.target.checked);
-        });
+      toggle.checked = isDark;
     });
+  }
 
-    // Inizializzazione Tema al caricamento
-    if (localStorage.getItem("theme") === "dark") {
-        updateTheme(true);
-    }
-
-    // --- LOGICA FONT SIZE (Sincronizzata) ---
-    const updateFont = (isLarge) => {
-        if (isLarge) {
-            document.body.classList.add("large-text");
-            localStorage.setItem("fontSize", "large");
-        } else {
-            document.body.classList.remove("large-text");
-            localStorage.setItem("fontSize", "normal");
-        }
-        // Sincronizza tutti i toggle presenti nella pagina
-        fontToggles.forEach(t => t.checked = isLarge);
-    };
+  function updateFont(isLarge) {
+    body.classList.toggle("large-text", isLarge);
+    localStorage.setItem("fontSize", isLarge ? "large" : "normal");
 
     fontToggles.forEach(toggle => {
-        toggle.addEventListener("change", (e) => {
-            updateFont(e.target.checked);
-        });
+      toggle.checked = isLarge;
+    });
+  }
+
+  // INIZIALIZZAZIONE TEMA / FONT
+  updateTheme(localStorage.getItem("theme") === "dark");
+  updateFont(localStorage.getItem("fontSize") === "large");
+
+  // MENU MOBILE
+  if (menuToggle && menuOverlay) {
+    menuToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openOrToggleMobileMenu();
     });
 
-    // Inizializzazione Font al caricamento
-    if (localStorage.getItem("fontSize") === "large") {
-        updateFont(true);
-    }
+    menuOverlay.addEventListener("click", (e) => {
+      if (e.target === menuOverlay) {
+        closeMobileMenu();
+      }
+    });
+
+    menuLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        closeMobileMenu();
+      });
+    });
+  }
+
+  // MENU IMPOSTAZIONI DESKTOP
+  if (settingsToggle && settingsMenu) {
+    settingsToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      settingsMenu.classList.toggle("active");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (settingsContainer && !settingsContainer.contains(e.target)) {
+        settingsMenu.classList.remove("active");
+      }
+    });
+  }
+
+  // TOGGLE TEMA
+  themeToggles.forEach(toggle => {
+    toggle.addEventListener("change", (e) => {
+      updateTheme(e.target.checked);
+    });
+  });
+
+  // TOGGLE TESTO GRANDE
+  fontToggles.forEach(toggle => {
+    toggle.addEventListener("change", (e) => {
+      updateFont(e.target.checked);
+    });
+  });
 });
